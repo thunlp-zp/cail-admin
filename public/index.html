@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>CAIL 后台管理系统</title>
+    <script>
+      // 获取链接字段
+      function getUrlParam(url, name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = url.substr(1).match(reg);  //匹配目标参数
+        if (r != null)
+          return unescape(r[2]);
+        return null; //返回参数值
+      }
+      window.onload = function () {
+        let userID = getUrlParam(window.location.search, 'userID')
+        localStorage.setItem("userID", userID);
+        if (window.location.href.indexOf("?") >= 0) {
+          window.location.href = window.location.href.substring(0, window.location.href.indexOf("?"))
+        }
+        
+      }
+      
+    </script>
+  </head>
+  <body>
+    <!-- <noscript>
+      <strong>We're sorry but vue-admin-webapp doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript> -->
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
